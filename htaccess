@@ -1,0 +1,38 @@
+# UTF-8
+
+AddDefaultCharset UTF-8
+php_value mbstring.func_overload 2
+
+
+# No Cache
+# need mod_headers.c and mod_expires.c
+<IfModule mod_headers.c>
+Header append Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "now"
+</IfModule>
+
+
+#
+# Разрешение кеширования в этой папке и всех дочерних папках
+# Необходимо включение модулей
+# mod_headers.c и mod_expires.c
+#
+# Заголовок Cache-Control
+<IfModule mod_headers.c>
+Header  append Cache-Control "public"
+</IfModule>
+# Заголовок Expires
+<IfModule mod_expires.c>
+ExpiresActive  On
+ExpiresDefault  "access plus 100 days"
+</IfModule>
+
+
+
+
+
+
+
